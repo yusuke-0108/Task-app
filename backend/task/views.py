@@ -25,11 +25,12 @@ class TaskDetail(APIView):
         try:
             return Task.objects.get(pk=pk)
         except Task.DoesNotExist:
-            return Http404
+            raise Http404
     
     def get(self, request, pk, format=None):
         task = self.get_object(pk)
         serializer = TaskSerializer(task)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
     
         
