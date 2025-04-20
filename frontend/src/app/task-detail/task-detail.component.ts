@@ -39,6 +39,7 @@ export class TaskDetailComponent {
     
     this.taskService.deleteTask(this.task.id).subscribe(() => {
       alert('削除しました');
+      this.taskService.notifyTaskListUpdate();
       this.router.navigate(['/tasks']);
     });
   }

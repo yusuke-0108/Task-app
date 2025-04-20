@@ -1,37 +1,36 @@
-<div>
-    <h2>新しいタスクを作成</h2>
-
+<div class="task-form">
     <form (ngSubmit)="createNewTask()" #taskForm="ngForm">
-    <div>
-        <label for="title">タイトル</label>
+      <div>
+        <div><label for="title">タイトル</label></div>
         <input type="text" id="title" name="title" required [(ngModel)]="newTask.title" />
-    </div>
-
-    <div>
-        <label for="detail">詳細</label>
+      </div>
+  
+      <div>
+        <div><label for="detail">詳細</label></div>
         <textarea id="detail" name="detail" required [(ngModel)]="newTask.detail"></textarea>
-    </div>
-
-    <button type="submit" [disabled]="taskForm.invalid">作成</button>
+      </div>
+  
+      <button type="submit" [disabled]="taskForm.invalid">作成</button>
     </form>
-</div>
-
-<div style="display: flex;">
-    <div style="width: 40%; border-right: 1px solid #ccc; padding: 1rem;">
-        <h2>タスク一覧</h2>
-        <ul>
+  </div>
+  
+  <div class="task-layout">
+    <div class="task-list">
+      <h2>タスク一覧</h2>
+      <ul>
         <li *ngFor="let task of tasks">
-            <a [routerLink]="[task.id]">
-                <h3>{{ task.title }}</h3> 
-            </a>
-            - {{ task.completed ? 'Completed' : 'Not Completed' }}
+          <a [routerLink]="[task.id]">
+            <h3>{{ task.title }}</h3>
+          </a>
+          - {{ task.completed ? 'Completed' : 'Not Completed' }}
         </li>
-        </ul>
+      </ul>
     </div>
-
-    <div style="flex: 1; padding: 1rem;">
-        <router-outlet></router-outlet>
+  
+    <div class="task-detail">
+      <router-outlet></router-outlet>
     </div>
-</div>
+  </div>
+  
   
   

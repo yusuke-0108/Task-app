@@ -25,18 +25,39 @@ export class TaskListComponent implements OnInit{
     private router: Router,
   ) {}
 
+  loadTasks(): void {
+    this.taskService.getTasks().subscribe(data => {
+      this.tasks = data;
+    });
+  }
+
+  resetnewTask(): void {
+    this.newTask = {
+      title: '',
+      detail: '',
+      completed: false
+    };
+  }
+
   ngOnInit(): void {
       console.log('TaskListComponent: 初期化');
       this.taskService.getTasks().subscribe(data => {
         console.log('データ取得:', data);
-        this.tasks = data});
+        this.loadTasks();
+
+        this.taskService.onTaskListUpdate().subscribe(() => {
+          this.loadTasks();
+        })
+      });
   }
 
   createNewTask(): void {
     this.taskService.createTask(this.newTask).subscribe((createdTask) =>{
       console.log(createdTask);
       alert('新しいタスクを作成しました');
-      this.router.navigate(['/tasks', createdTask.id]);
+      this.resetnewTask();
+      this.taskService.notifyTaskListUpdate();
+      this.router.navigate(['/tasks']);
     });
   }
 
