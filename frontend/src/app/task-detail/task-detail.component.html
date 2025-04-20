@@ -1,13 +1,18 @@
-<h2>タスク詳細</h2>
-<div *ngIf="task">
-    <ul>
-        <h3>{{ task.title }}</h3>
-        <div>
-            {{ task.detail }}
-        </div>
-    </ul>
-    <button (click)="deleteTask()">削除</button>
+<h2 class="task-title">タスク詳細</h2>
+
+<div *ngIf="task" class="task-container">
+  <div class="task-content">
+    <h3>{{ task.title }}</h3>
+    <p>{{ task.detail }}</p>
+  </div>
+
+  <div class="task-actions">
+    <button (click)="deleteTask()">🗑 削除</button>
+    <a [routerLink]="['/tasks', task.id, 'edit']">✏️ 編集</a>
+  </div>
 </div>
+
+
 
 
 

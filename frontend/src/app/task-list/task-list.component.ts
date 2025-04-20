@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { TaskService, Task } from '../task.service';
 import { FormsModule } from '@angular/forms';
-
+import { TaskEditComponent } from '../task-edit/task-edit.component';
 @Component({
   selector: 'app-task-list',
   standalone: true,
