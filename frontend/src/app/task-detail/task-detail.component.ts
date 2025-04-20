@@ -4,6 +4,7 @@ import { ActivatedRoute, RouterModule, Router } from '@angular/router';
 import { TaskService, Task } from '../task.service';
 import { FormsModule } from '@angular/forms';
 import { title } from 'process';
+import { parseArgs } from 'util';
 // import { Router } from 'express';
 
 @Component({
@@ -22,10 +23,14 @@ export class TaskDetailComponent {
     private taskService: TaskService
   ) {}
 
-  ngOnInit(): void{
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.taskService.getTask(id).subscribe(data =>{
-      this.task = data;
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      const id = Number(params.get('id'));
+      if (!isNaN(id)) {
+        this.taskService.getTask(id).subscribe(data => {
+          this.task = data;
+        });
+      }
     });
   }
 

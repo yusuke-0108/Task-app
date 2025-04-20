@@ -4,7 +4,12 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { TaskDetailComponent } from './task-detail/task-detail.component';
 
 export const routes: Routes = [
-    { path: '', component: AppComponent },
-    { path: 'tasks', component: TaskListComponent },
-    { path: 'tasks/:id', component: TaskDetailComponent }
+    {
+        path:"tasks",
+        component: TaskListComponent,
+        children: [
+            { path: ':id', component: TaskDetailComponent },
+        ],
+    },
+    { path: '', redirectTo: 'tasks', pathMatch: 'full'},
 ];
