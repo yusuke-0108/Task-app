@@ -14,7 +14,7 @@ export interface Task {
 })
 
 export class TaskService {
-  private apiUrl = 'http://localhost:8000/tasks/';
+  private apiUrl = 'http://localhost:8000/api/tasks/';
 
   constructor(private http: HttpClient) { }
 
@@ -25,5 +25,13 @@ export class TaskService {
 
   getTask(id: number): Observable<Task> {
     return this.http.get<Task>(`${this.apiUrl}${id}/`)
+  }
+
+  createTask(task: Partial<Task>): Observable<Task> {
+    return this.http.post<Task>(this.apiUrl, task);
+  }
+
+  deleteTask(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}${id}/`);
   }
 }

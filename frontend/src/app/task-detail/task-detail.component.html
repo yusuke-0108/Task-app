@@ -1,1 +1,13 @@
-<p>task-detail works!</p>
+<h2>タスク詳細</h2>
+<div *ngIf="task">
+    <ul>
+        <h3>{{ task.title }}</h3>
+        <div>
+            {{ task.detail }}
+        </div>
+    </ul>
+    <button (click)="deleteTask()">削除</button>
+</div>
+
+
+

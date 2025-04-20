@@ -20,6 +20,6 @@ from task.views import TaskListView, TaskDetail
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("tasks/", TaskListView.as_view(), name="task-list"),
-    path("tasks/<int:pk>/", TaskDetail.as_view(), name="task-detail")
+    path("api/tasks/", TaskListView.as_view(), name="task-list"),
+    path("api/tasks/<int:pk>/", TaskDetail.as_view(), name="task-detail")
 ]
