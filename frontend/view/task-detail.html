@@ -1,0 +1,16 @@
+<div ng-controller="TaskDetailController">
+    <div ng-if="task" class="taskdetail-container">
+      <h2 class="task-title">タスク詳細</h2>
+      <div class="taskdetail-content">
+        <p><strong>ID:</strong> {{ task.id }}</p>
+        <p><strong>タイトル:</strong> {{ task.title }}</p>
+        <p><strong>完了:</strong> {{ task.completed ? 'はい' : 'いいえ' }}</p>
+      </div>
+    </div>
+  
+    <div ng-if="error">
+      <p style="color:red">{{ error }}</p>
+    </div>
+  </div>
+  
+  

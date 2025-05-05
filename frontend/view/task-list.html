@@ -1,0 +1,13 @@
+<div class="container" ng-controller="TaskListController">
+    <div class="sidebar">
+      <h2>タスク一覧</h2>
+      <ul>
+        <li ng-repeat="task in tasks">
+            <a ng-href="#!/tasks/{{ task.id }}">
+            {{ task.title }} {{ task.id }}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
