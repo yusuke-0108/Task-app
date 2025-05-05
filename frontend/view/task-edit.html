@@ -1,0 +1,23 @@
+<div ng-controller="TaskUpdateController">
+    <div class="edit-form">
+    <form ng-if="task" ng-submit="updateTask()">
+        <h2 class="task-title">タスク編集</h2>
+            <div>
+              <label for="title">タイトル</label><p></p>
+              <input type="text" id="title" ng-model="task.title" required>
+            </div>
+            <div>
+              <label for="detail">詳細</label><p></p>
+              <textarea id="detail" ng-model="task.detail" required></textarea>
+            </div>
+            <div>
+                <label ng-click="task.completed = !task.completed" style="cursor: pointer;">
+                    {{ task.completed ? '✅ 完了' : '🕒 未完了' }}
+                </label>
+            </div>
+            <div>
+              <button type="submit">更新</button>
+            </div>
+    </form>
+    </div>
+</div>

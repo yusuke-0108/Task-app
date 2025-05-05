@@ -2,7 +2,8 @@ angular.module('taskApp')
   .controller('TaskListController', function($scope, $http, $routeParams) {
     $scope.tasks = [];
     $scope.detailTemplateUrl = '';
-    
+    $scope.mode = 'detail';
+
     $http.get('http://localhost:8000/api/tasks/')
       .then(function(response) {
         $scope.tasks = response.data;
@@ -16,5 +17,11 @@ angular.module('taskApp')
       $scope.taskId = $routeParams.id;
     } else {
       $scope.detailTemplateUrl = ''; 
+    }
+
+    $scope.editTask = function() {
+      $scope.mode = 'edit';
+      $scope.editTemplateUrl = 'view/task-edit.html';
+      console.log('editTask called');
     }
   });

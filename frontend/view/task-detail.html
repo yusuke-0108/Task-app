@@ -4,7 +4,9 @@
       <div class="taskdetail-content">
         <p><strong>ID:</strong> {{ task.id }}</p>
         <p><strong>タイトル:</strong> {{ task.title }}</p>
+        <p><strong>説明:</strong> {{ task.detail }}</p>
         <p><strong>完了:</strong> {{ task.completed ? 'はい' : 'いいえ' }}</p>
+        <button ng-click="$parent.editTask()">編集</button>
       </div>
     </div>
   

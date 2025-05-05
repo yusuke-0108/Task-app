@@ -1,29 +1,47 @@
 .task-form {
+  margin: 0 auto;
   margin-bottom: 2rem;
+  width: 80%;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
 
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+.task-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0 auto;
+}
 
-    input,
-    textarea {
-      width: 25%;
-      padding: 0.5rem;
-      font-size: 1rem;
-    }
+.task-form form input,
+.task-form form textarea {
+  width: 95%;
+  padding: 1rem;
+  font-size: 1rem;
+}
 
-    button {
-      width: fit-content;
-      padding: 0.5rem 1rem;
-    }
+.task-form form button {
+  width: fit-content;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1%;
+  margin-top: 1%;
+}
 
-    label {
-      width: 10%;
-      font-size: 16px;
-     }
+.task-form form label {
+  width: 80%;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: underline;
+}
 
-  }
+.main {
+  width: 55%;
+}
+
+.form-group {
+  margin: 0 auto;
+  width: 90%;
 }
 
 .tasklist-title {
@@ -40,15 +58,16 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   display: flex;
   width: 80%;
-  .task-list {
-    width: 40%;
-    margin-right: 10%;
-  }
+}
 
-  .task-detail {
-    margin: 0 auto;
-    width: 50%;
-  }
+.tasklist-container .task-list {
+  width: 40%;
+  margin-right: 10%;
+}
+
+.tasklist-container .task-detail {
+  margin: 0 auto;
+  width: 50%;
 }
 
 .tasklist-item {
@@ -90,7 +109,6 @@
   background-color: #2ecc71;
   color: white;
 }
-
 
 /* Task detail styles */
 .task-container {
@@ -154,4 +172,38 @@
 
 .task-actions a:hover {
   background-color: #2980b9;
+}
+
+/* Edit form */
+.edit-form {
+  margin: 0 auto;
+  width: 95%;
+}
+
+.edit-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0 auto;
+}
+
+.edit-form form input,
+.edit-form form textarea {
+  width: 95%;
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+.edit-form form button {
+  width: fit-content;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1%;
+  margin-top: 1%;
+}
+
+.edit-form form label {
+  width: 80%;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: underline;
 }

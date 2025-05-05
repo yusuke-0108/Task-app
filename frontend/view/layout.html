@@ -1,13 +1,40 @@
+<div ng-controller="TaskCreateController" class="task-form">
+  <form ng-submit="createTask()">
+    <div class="form-group">
+      <div>
+        <label for="title">タイトル</label><p></p>
+        <input type="text" id="title" ng-model="newTask.title" required>
+      </div>
+      <div>
+        <label for="detail">詳細</label><p></p>
+        <textarea id="detail" ng-model="newTask.detail" required></textarea>
+      </div>
+      <div>
+        <button type="submit">作成</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
 <div class="tasklist-container">
     <div class="sidebar task-list">
       <h2 class="tasklist-title">タスク一覧</h2>
       <ul>
         <li ng-repeat="task in tasks" class="tasklist-item">
-          <a ng-href="#!/tasks/{{ task.id }}">{{ task.title }}</a>
+          <a ng-href="#!/tasks/{{ task.id }}">
+            <h3>{{ task.title }}</h3>
+              <span class="status">
+                {{ task.completed ? '✅ 完了' : '🕒 未完了' }}
+              </span>
+          </a>
         </li>
       </ul>
     </div>
-  
-    <div class="main" ng-include="detailTemplateUrl"></div>
+    
+    <div class="main">
+      <div ng-if="mode == 'detail'" ng-include="detailTemplateUrl"></div>
+      <div ng-if="mode == 'edit'" ng-include="editTemplateUrl"></div>
+    </div>
   </div>
   
