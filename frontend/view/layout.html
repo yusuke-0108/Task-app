@@ -5,13 +5,39 @@
         <label for="title">タイトル</label><p></p>
         <input type="text" id="title" ng-model="newTask.title" required>
       </div>
+
+      <!-- ＋ボタンと選択肢 -->
       <div>
-        <label for="detail">詳細</label><p></p>
-        <textarea id="detail" ng-model="newTask.detail" required></textarea>
+        <button type="button" ng-click="toggleFieldSelector()">＋ 項目追加</button>
+        <div ng-if="showFieldSelector">
+          <p>追加する項目を選んでください：</p>
+          <div class="field-options">
+            <button
+              type="button"
+              ng-repeat="option in availableFields"
+              ng-click="addField(option.key)"
+              class="field-option-button"
+            >
+              {{ option.label }}
+            </button>
+          </div>
+        </div>
       </div>
-      <div>
-        <button type="submit">作成</button>
+      <div ng-repeat="field in additionalFields">
+        <label>{{ fieldDefinitions[field].label }}</label>
+        <div ng-if="field == 'detail'">
+          <textarea ng-model="newTask[field]" rows="4" cols="50"></textarea>
+        </div>
+        <div ng-if="field == 'dueDate'">
+          <input type="date" id="due_date" ng-model="newTask[field]" />
+        </div>
+        <div ng-if="field != 'detail'">
+          <input type="{{ fieldDefinitions[field].type }}" ng-model="newTask[field]" />
+        </div>
       </div>
+    </div>
+    <div>
+      <button type="submit">作成</button>
     </div>
   </form>
 </div>

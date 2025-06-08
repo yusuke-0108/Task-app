@@ -4,3 +4,5 @@ frontend/.angular/*
 frontend/.vscode/*
 frontend/public/*
 frontend_old
+**.sqlite3
+**/*.pyc
