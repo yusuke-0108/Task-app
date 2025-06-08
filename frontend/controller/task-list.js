@@ -1,8 +1,9 @@
 angular.module('taskApp')
-  .controller('TaskListController', function($scope, $http, $routeParams) {
+  .controller('TaskListController', function($scope, $http, $routeParams, $location) {
     $scope.tasks = [];
-    $scope.detailTemplateUrl = '';
-    $scope.mode = 'detail';
+    $scope.detailTemplateUrl = 'view/task-detail.html';
+    $scope.editTemplateUrl = 'view/task-edit.html';
+    $scope.mode = $location.path().endsWith('/edit') ? 'edit' : 'detail';
 
     $http.get('http://localhost:8000/api/tasks/')
       .then(function(response) {
@@ -11,17 +12,4 @@ angular.module('taskApp')
           console.error('Error fetching tasks:', error);
       }
     );
-
-    if ($routeParams.id) {
-      $scope.detailTemplateUrl = 'view/task-detail.html';
-      $scope.taskId = $routeParams.id;
-    } else {
-      $scope.detailTemplateUrl = ''; 
-    }
-
-    $scope.editTask = function() {
-      $scope.mode = 'edit';
-      $scope.editTemplateUrl = 'view/task-edit.html';
-      console.log('editTask called');
-    }
   });

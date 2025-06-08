@@ -13,8 +13,7 @@
             <p><strong>{{ notEmptyField.label }}:</strong> {{ notEmptyField.value }}</p>
           </div>
         </div>
-        <button ng-click="$parent.editTask()">編集</button>
-      </div>
+        <a ng-href="#!/tasks/{{ task.id }}/edit" class="edit-link">編集</a>
     </div>
   
     <div ng-if="error">

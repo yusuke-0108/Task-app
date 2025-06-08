@@ -9,6 +9,10 @@ angular.module('taskApp', ['ngRoute'])
         templateUrl: 'view/layout.html', // 同じlayoutを再利用
         controller: 'TaskListController' // 同じコントローラー
       })
+      .when('/tasks/:id/edit', {
+        templateUrl: 'view/layout.html',
+        controller: 'TaskListController'
+      })
       .otherwise({
         redirectTo: '/tasks'
       });
