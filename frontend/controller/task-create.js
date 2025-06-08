@@ -1,5 +1,10 @@
 angular.module('taskApp')
-    .controller('TaskCreateController', function($scope, $http, $location) {
+    .controller('TaskCreateController', function(
+        $scope,
+        $http,
+        $location,
+        TaskUtilsService
+    ) {
         $scope.newTask = {
             title: '',
             detail: '',
@@ -23,7 +28,7 @@ angular.module('taskApp')
 
         $scope.createTask = function() {
             if ($scope.newTask.due_date instanceof Date) {
-                $scope.newTask.due_date = formatDateLocal($scope.newTask.due_date);
+                $scope.newTask.due_date = TaskUtilsService.formatDateToUTC($scope.newTask.due_date);
             }
             $http.post('http://localhost:8000/api/tasks/', $scope.newTask)
                 .then(function(response) {
@@ -46,14 +51,4 @@ angular.module('taskApp')
             }
             $scope.showFieldSelector = false;
         };
-
-        function formatDateLocal(date) {
-            const pad = (n) => (n < 10 ? '0' + n : n);
-            return date.getFullYear() + '-' +
-                   pad(date.getMonth() + 1) + '-' +
-                   pad(date.getDate()) + 'T' +
-                   pad(date.getHours()) + ':' +
-                   pad(date.getMinutes()) + ':' +
-                   pad(date.getSeconds());
-        }
     });

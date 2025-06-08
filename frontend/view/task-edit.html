@@ -1,23 +1,33 @@
 <div ng-controller="TaskUpdateController">
     <div class="edit-form">
-    <form ng-if="task" ng-submit="updateTask()">
+      <form ng-if="task" ng-submit="updateTask()">
         <h2 class="task-title">タスク編集</h2>
-            <div>
-              <label for="title">タイトル</label><p></p>
-              <input type="text" id="title" ng-model="task.title" required>
-            </div>
-            <div>
-              <label for="detail">詳細</label><p></p>
-              <textarea id="detail" ng-model="task.detail" required></textarea>
-            </div>
-            <div>
-                <label ng-click="task.completed = !task.completed" style="cursor: pointer;">
-                    {{ task.completed ? '✅ 完了' : '🕒 未完了' }}
-                </label>
-            </div>
-            <div>
-              <button type="submit">更新</button>
-            </div>
-    </form>
+        <div ng-repeat="notEmptyField in task.notEmptyFieldsTask track by $index">
+          <div ng-if="notEmptyField.label == 'タイトル'">
+            <label for="title">タイトル</label><p></p>
+            <input type="text" id="title" ng-model="task.title" required>
+          </div>
+          <div ng-if="notEmptyField.label == '詳細'">
+            <label for="detail">詳細</label><p></p>
+            <textarea id="detail" ng-model="task.detail" required></textarea>
+          </div>
+          <div ng-if="notEmptyField.label == '期限'">
+            <p><strong>期限:</strong> 
+              <div>（更新前）{{ task.due_date | date:'yyyy年MM月dd日' }}</div>
+              <div>（更新後）
+                <input type="date" id="due_date" ng-model="task.due_date" required>
+              </div>
+            </p>
+          </div>
+          <div ng-if="notEmptyField.label == 'ステータス'">
+            <label ng-click="task.completed = !task.completed" style="cursor: pointer;">
+                <p><strong>ステータス：</strong>{{ task.completed ? '✅ 完了' : '🕒 未完了' }}</p>
+            </label>
+          </div>
+        </div>
+        <div>
+          <button type="submit">更新</button>
+        </div>
+      </form>
     </div>
 </div>
