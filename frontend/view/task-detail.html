@@ -6,15 +6,14 @@
           <div ng-if="notEmptyField.label == 'ステータス'">
             <p><strong>ステータス:</strong> {{ notEmptyField.value ? '✅ 完了' : '🕒 未完了' }}</p>
           </div>
-          <div ng-if="notEmptyField.label != 'ステータス'">
+          <div ng-if="notEmptyField.label == '期限'">
+            <p><strong>期限:</strong> {{ notEmptyField.value | date:'yyyy年MM月dd日' }}</p>
+          </div>
+          <div ng-if="notEmptyField.label != 'ステータス' && notEmptyField.label != '期限'">
             <p><strong>{{ notEmptyField.label }}:</strong> {{ notEmptyField.value }}</p>
           </div>
         </div>
-        <!-- <p><strong>ID:</strong> {{ task.id }}</p>
-        <p><strong>タイトル:</strong> {{ task.title }}</p>
-        <p><strong>説明:</strong> {{ task.detail }}</p>
-        <p><strong>完了:</strong> {{ task.completed ? 'はい' : 'いいえ' }}</p>
-        <button ng-click="$parent.editTask()">編集</button> -->
+        <button ng-click="$parent.editTask()">編集</button>
       </div>
     </div>
   
